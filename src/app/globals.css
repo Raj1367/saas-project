@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --sm: 375px;
+  --md: 768px;
+  --lg: 1200px;
+  --container-padding-default: 20px;
+  --container-padding-lg: 80px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  background-color: #eaeefe;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .container {
+    width: 100%;
+    max-width: var(--lg);
+    padding-left: var(--container-padding-default);
+    padding-right: var(--container-padding-default);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      padding-left: var(--container-padding-lg);
+      padding-right: var(--container-padding-lg);
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-black text-white px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight;
+  }
+  .btn-primary {
+    @apply bg-black text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-black;
+  }
+
+  .btn-text {
+    @apply text-black bg-transparent;
+  }
+  .tag {
+    @apply text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg tracking-tight;
+  }
+  .section-title {
+    @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text;
+  }
+  .section-description {
+    @apply text-center md:text-[22px] md:leading-[30px] tracking-tight text-[#010D3E];
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: radial-gradient(
+      ellipse 200% 100% at bottom left,
+      #183ec2,
+      #eaeefe 100%
+    );
+  }
+  .gradient-rainbow {
+    background: linear-gradient(
+      to right,
+      #dd7ddf,
+      #e1cd86,
+      #bbcb92,
+      #71c2ef,
+      #3bffff,
+      #dd7ddf,
+      #e1cd86,
+      #bbcb92,
+      #71c2ef,
+      #3bffff,
+      #dd7ddf
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    font-weight: 500;
+  }
+}
