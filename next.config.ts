@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
+/** @type {import('webpack').Configuration} */
 const nextConfig = {
-  webpack(config) {
+  webpack( config:any) {
     // Find the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test instanceof RegExp && String(rule.test).includes("svg")
+      (rule:any) => rule.test instanceof RegExp && String(rule.test).includes("svg")
     );
 
     if (fileLoaderRule) {
@@ -29,8 +30,6 @@ const nextConfig = {
 
     return config;
   },
-
-  // ...other config
 };
 
 export default nextConfig;
